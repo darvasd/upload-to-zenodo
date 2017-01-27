@@ -1,0 +1,30 @@
+{
+    "metadata": {
+        "title": "{TITLE}",
+        "description": "{ABSTRACT}",
+        "creators": {AUTHORS},
+        "partof_pages": "{PAGES}",
+        "keywords": {KEYWORDS}, 
+        "upload_type": "publication",
+        "publication_type": "conferencepaper",
+        "access_right": "open", 
+        "communities": [{ "identifier": "bute-dmis-minisymposium" }],
+        "imprint_isbn": "978-963-313-151-0",
+        "imprint_place": "Budapest, Hungary", 
+        "imprint_publisher": "Budapest University of Technology and Economics, Department of Measurement and Information Systems",
+        "partof_title": "Proceedings of the 24th PhD Mini-Symposium",
+        "license": { "id": "CC-BY-SA-4.0" }, 
+        "conference_dates": "30-31 January 2017", 
+        "conference_place": "Budapest, Hungary", 
+        "conference_title": "24th PhD Mini-Symposium of the Department of Measurement and Information Systems, Budapest University of Technology and Economics", 
+        "conference_url": "http://minisy.mit.bme.hu/",
+        "publication_date": "2017-01-30", 
+        "related_identifiers": [
+          {
+            "identifier": "978-963-313-151-0", 
+            "relation": "isPartOf", 
+            "scheme": "isbn"
+          }
+        ]
+    }
+}
