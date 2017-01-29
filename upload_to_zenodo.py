@@ -21,7 +21,6 @@ def upload(metadata, pdf_path):
 
     # Get the submission ID
     submission_id = json.loads(response.text)["id"]
-    print("Submission ID =", submission_id)
 
     # Upload the file
     url = "{base_url}/api/deposit/depositions/{id}/files?access_token={token}".format(base_url=BASE_URL, id=str(submission_id), token=TOKEN)
@@ -32,12 +31,14 @@ def upload(metadata, pdf_path):
     if response.status_code > 210:
         print("Error happened during file upload, status code: " + str(response.status_code))
         return
-        
+    
+    print("{file} submitted with submission ID = {id} (DOI: 10.5281/zenodo.{id})".format(file=pdf_path,id=submission_id))    
     # The submission needs an additional "Publish" step. This can also be done from a script, but to be on the safe side, it is not included. (The attached file cannot be changed after publication.)
     
     
 def batch_upload(directory):
     for metadata_file in os.listdir(directory):
+        metadata_file = os.path.join(directory, metadata_file)
         if metadata_file.endswith(".json"):
             pdf_file = metadata_file.replace(".json",".pdf")
             if os.path.isfile(pdf_file):
@@ -45,6 +46,8 @@ def batch_upload(directory):
                 with open(metadata_file, 'r') as f:
                     metadata = f.read()
                 upload(metadata, pdf_file)
+            else:
+                print("The file %s might be a submission metadata file, but %s does not exist." % (metadata_file, pdf_file))
            
            
 def _is_valid_json(text):
