@@ -9,6 +9,8 @@ A simple, stupid, quick and dirty script to batch upload papers to [Zenodo](http
 
 _You don't want to accidentally flood your real Zenodo account with dummy submissions. We don't want that either. That's why by default the script `upload_to_zenodo.py` uses the sandbox of Zenodo. When you are done with experimenting, just replace `sandbox.zenodo.org` with `zenodo.org` in that script._
 
+<a href="https://github.com/darvasd/upload-to-zenodo/blob/master/docs/overview.png" title="Overview"><img src="https://github.com/darvasd/upload-to-zenodo/blob/master/docs/overview.png" width="800" /></a>
+
 1. Get a _Personal access token_ at https://zenodo.org/account/settings/applications/. The `deposit:write` is enough: to be on the safe side, the script does not publish the uploaded papers, the _Publish_ button has to be pushed manually. (Once a document is published on Zenodo, the attached files cannot be modified.)
 1. If you would like to group all your uploads to a Zenodo _Comunity_ (that may represent your conference or conference series), [create it](https://zenodo.org/communities/new/) and note its ID. 
 1. Create a template JSON describing your submissions. Check the [documentation](https://zenodo.org/dev#restapi-rep) (Representations > Deposition metadata) for details about it.
