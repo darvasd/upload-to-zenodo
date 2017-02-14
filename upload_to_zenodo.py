@@ -2,6 +2,7 @@ import json
 import requests
 import os
 import sys
+import codecs
 
 BASE_URL = "https://sandbox.zenodo.org" # TODO: once you are sure about what you are doing, remove the "sandbox." part
 TOKEN = ""
@@ -43,8 +44,11 @@ def batch_upload(directory):
             pdf_file = metadata_file.replace(".json",".pdf")
             if os.path.isfile(pdf_file):
                 print("Uploading %s & %s" % (metadata_file, pdf_file))
-                with open(metadata_file, 'r') as f:
+                with codecs.open(metadata_file, 'r', "utf-8") as f:
                     metadata = f.read()
+                    # Re-encoding in order to support UTF-8 inputs
+                    metadata = json.dumps(json.loads(metadata), ensure_ascii=True)
+                    print(metadata)
                 upload(metadata, pdf_file)
             else:
                 print("The file %s might be a submission metadata file, but %s does not exist." % (metadata_file, pdf_file))
