@@ -9,7 +9,7 @@ def fill_template(template_filename, data_filename):
         template = template_file.read()
 
     # Creating the files based on the template and the data descriptor CSV
-    with open(data_filename,"r") as csv_file:
+    with open(data_filename,"r", encoding='utf-8-sig') as csv_file:
         csv_reader = csv.DictReader(csv_file)
         for row in csv_reader:
             output_filename = row["FILENAME"]
@@ -20,10 +20,10 @@ def fill_template(template_filename, data_filename):
             for column in csv_reader.fieldnames:
                 if column != "FILENAME":
                     filled_template = filled_template.replace("{%s}" % column, row[column])
-                    print("    {%s} = %s" % (column, row[column]))
+                    print(("    {%s} = %s" % (column, row[column])).encode().decode('cp850'))
                     
             # Write to output file
-            with open(output_filename, "w") as output_file:
+            with open(output_filename, "w", encoding='utf-8') as output_file:
                 output_file.write(filled_template)
                 
                 

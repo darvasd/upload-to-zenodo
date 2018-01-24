@@ -44,11 +44,12 @@ def batch_upload(directory):
             pdf_file = metadata_file.replace(".json",".pdf")
             if os.path.isfile(pdf_file):
                 print("Uploading %s & %s" % (metadata_file, pdf_file))
-                with codecs.open(metadata_file, 'r', "utf-8") as f:
+                with codecs.open(metadata_file, 'r', 'utf-8') as f:
                     metadata = f.read()
                     # Re-encoding in order to support UTF-8 inputs
-                    metadata = json.dumps(json.loads(metadata), ensure_ascii=True)
-                    print(metadata)
+                    metadata_json = json.loads(metadata)
+                    metadata = json.dumps(metadata_json, ensure_ascii=True)
+                    #print(metadata)
                 upload(metadata, pdf_file)
             else:
                 print("The file %s might be a submission metadata file, but %s does not exist." % (metadata_file, pdf_file))
